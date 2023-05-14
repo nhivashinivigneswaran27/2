@@ -41,6 +41,6 @@ public class LoginPage extends ProjectSpecificMethods {
 
 	private void run() {
 		System.out.println("test");
-
+System.out.println("test1");
 	}
 }
