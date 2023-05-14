@@ -39,4 +39,8 @@ public class LoginPage extends ProjectSpecificMethods {
 		return new HomePage(driver, node);
 	}
 
+	private void run() {
+		System.out.println("test");
+System.out.println("test1");
+	}
 }
