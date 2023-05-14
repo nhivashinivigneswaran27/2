@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-05-13T17:57:39 IST" name="Default suite" finished-at="2023-05-13T17:57:55 IST" duration-ms="16283">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.salesforce.testcases.LoginTestCase@6f03482]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test started-at="2023-05-13T17:57:39 IST" name="Default test" finished-at="2023-05-13T17:57:55 IST" duration-ms="16283">
+      <class name="com.salesforce.testcases.LoginTestCase">
+        <test-method is-config="true" signature="startReport()[pri:0, instance:com.salesforce.testcases.LoginTestCase@6f03482]" started-at="2023-05-13T17:57:39 IST" name="startReport" finished-at="2023-05-13T17:57:39 IST" duration-ms="104" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startReport -->
+        <test-method is-config="true" signature="setValues()[pri:0, instance:com.salesforce.testcases.LoginTestCase@6f03482]" started-at="2023-05-13T17:57:39 IST" name="setValues" finished-at="2023-05-13T17:57:39 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setValues -->
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.salesforce.testcases.LoginTestCase@6f03482]" started-at="2023-05-13T17:57:39 IST" name="setUpClass" finished-at="2023-05-13T17:57:39 IST" duration-ms="103" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@4f081b5d]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method is-config="true" signature="report()[pri:0, instance:com.salesforce.testcases.LoginTestCase@6f03482]" started-at="2023-05-13T17:57:39 IST" name="report" finished-at="2023-05-13T17:57:39 IST" duration-ms="5" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- report -->
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:com.salesforce.testcases.LoginTestCase@6f03482]" started-at="2023-05-13T17:57:40 IST" name="beforeMethod" finished-at="2023-05-13T17:57:49 IST" duration-ms="9046" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="createLeaf(java.lang.String,java.lang.String)[pri:0, instance:com.salesforce.testcases.LoginTestCase@6f03482]" started-at="2023-05-13T17:57:49 IST" name="createLeaf" data-provider="fetchData" finished-at="2023-05-13T17:57:55 IST" duration-ms="6391" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[hari.radhakrishnan@qeagle.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Leaf@1234]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createLeaf -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:com.salesforce.testcases.LoginTestCase@6f03482]" started-at="2023-05-13T17:57:55 IST" name="afterMethod" finished-at="2023-05-13T17:57:55 IST" duration-ms="213" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.salesforce.testcases.LoginTestCase@6f03482]" started-at="2023-05-13T17:57:55 IST" name="tearDownClass" finished-at="2023-05-13T17:57:55 IST" duration-ms="13" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+        <test-method is-config="true" signature="stopReport()[pri:0, instance:com.salesforce.testcases.LoginTestCase@6f03482]" started-at="2023-05-13T17:57:55 IST" name="stopReport" finished-at="2023-05-13T17:57:56 IST" duration-ms="200" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- stopReport -->
+      </class> <!-- com.salesforce.testcases.LoginTestCase -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
