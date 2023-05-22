@@ -18,9 +18,10 @@ public class HomePage extends ProjectSpecificMethods {
 		this.node = node;
 	}
 
-	public HomePage clickApp() throws IOException {
+	public AppsPage clickApp() throws IOException, InterruptedException {
+		Thread.sleep(5000);
 		click(driver.findElement(By.className("slds-icon-waffle")));
-		return new HomePage(driver, node);
+		return new AppsPage(driver, node);
 	}
 
 //	public AppLauncherPage viewAllApp() {

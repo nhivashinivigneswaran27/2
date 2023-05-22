@@ -3,19 +3,19 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.salesforce.testcases.LoginTestCase">
+      <class name="com.salesforce.testcases.TC_17_DeleteDashboard">
         <methods>
           <include name="setUpClass"/>
           <include name="report"/>
           <include name="setValues"/>
+          <include name="createLeaf" invocation-numbers="0"/>
           <include name="afterMethod"/>
           <include name="tearDownClass"/>
           <include name="startReport"/>
-          <include name="createLeaf" invocation-numbers="0"/>
           <include name="stopReport"/>
           <include name="beforeMethod"/>
         </methods>
-      </class> <!-- com.salesforce.testcases.LoginTestCase -->
+      </class> <!-- com.salesforce.testcases.TC_17_DeleteDashboard -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

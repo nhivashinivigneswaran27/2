@@ -4,6 +4,9 @@ import org.openqa.selenium.WebElement;
 
 public interface Element {
 	public void click(WebElement ele);
+	public void click1(String spanTag) ;
+	public void click2(String buttonTag) ;
+	public void click3(String divTag); 
 
 	public void append(WebElement ele, String data);
 

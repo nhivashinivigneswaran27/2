@@ -9,9 +9,10 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class DataLibrary {
 
-	public static Object[][] readExcelData(String excelfileName) throws IOException {
+	public static Object[][] readExcelData(String dataSheetName) throws IOException {
+		
 		XSSFWorkbook wbook = 
-				new XSSFWorkbook("./data/"+excelfileName+".xlsx");
+				new XSSFWorkbook("./data/"+dataSheetName+".xlsx");
 		XSSFSheet sheet = wbook.getSheetAt(0);
 		int rowCount = sheet.getLastRowNum();
 		int colCount = sheet.getRow(0).getLastCellNum();

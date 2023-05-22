@@ -9,6 +9,8 @@ import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -22,6 +24,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.github.javafaker.Faker;
+import com.salesforce.pages.DashBoardPage;
 import com.salesforce.selenium.api.design.Browser1;
 import com.salesforce.selenium.api.design.Element;
 
@@ -29,16 +33,38 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import utils.Reporter;
 
 public class SeleniumBase extends Reporter implements Browser1, Element {
-	public RemoteWebDriver driver;
-	public WebDriverWait wait;
-
+	public static RemoteWebDriver driver;
+	public static WebDriverWait wait;
+	public static Faker faker;
+	public static String createRandomName, createDashboardName;
+	
 	public void click(WebElement ele) {
 		String text = "";
+	try {
+		wait = new WebDriverWait(driver, Duration.ofSeconds(10000));
+		wait.until(ExpectedConditions.elementToBeClickable(ele));
+		
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("arguments[0].click();", ele);
+				text = ele.getText();		
+				reportStep1("The Element " + text + " clicked", "pass");
+	}
+				
+				catch (Exception e) {
+					reportStep1("The Element " + text + " could not be clicked", "fail");
+					//throw new RuntimeException();	
+				}			
+	}	
+	public void click1(String spanTag) {
+		String text = "";
+		WebElement ele=driver.findElement(By.xpath("//span[text()='"+spanTag+"']"));
 		try {
-			wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			
+			wait = new WebDriverWait(driver, Duration.ofSeconds(10000));
 			wait.until(ExpectedConditions.elementToBeClickable(ele));
 			text = ele.getText();
-			ele.click();
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("arguments[0].click();", ele);
 			reportStep1("The Element " + text + " clicked", "pass");
 		} catch (Exception e) {
 			reportStep1("The Element " + text + " could not be clicked", "fail");
@@ -46,7 +72,39 @@ public class SeleniumBase extends Reporter implements Browser1, Element {
 		}
 
 	}
+	public void click2(String buttonTag) {
+		String text = "";
+		WebElement ele=driver.findElement(By.xpath("//button[text()='"+buttonTag+"']"));
+		try {
+			wait = new WebDriverWait(driver, Duration.ofSeconds(10000));
+			wait.until(ExpectedConditions.elementToBeClickable(ele));
+			text = ele.getText();
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("arguments[0].click();", ele);
+			reportStep1("The Element " + text + " clicked", "pass");
+		} catch (Exception e) {
+			reportStep1("The Element " + text + " could not be clicked", "fail");
+			throw new RuntimeException();
+		}
 
+	}
+	
+	public void click3(String divTag) {
+		String text = "";
+		WebElement ele=driver.findElement(By.xpath("//div[@title='"+divTag+"']"));
+		try {
+			wait = new WebDriverWait(driver, Duration.ofSeconds(10000));
+			wait.until(ExpectedConditions.elementToBeClickable(ele));
+			text = ele.getText();
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("arguments[0].click();", ele);
+			reportStep1("The Element " + text + " clicked", "pass");
+		} catch (Exception e) {
+			reportStep1("The Element " + text + " could not be clicked", "fail");
+			throw new RuntimeException();
+		}
+
+	}
 	public void append(WebElement ele, String data) {
 		ele.sendKeys(data);
 
@@ -237,6 +295,15 @@ public class SeleniumBase extends Reporter implements Browser1, Element {
 		return null;
 	}
 
+	public void searchName(WebElement ele, String dashboardName) {
+		
+		try {
+			ele.sendKeys((dashboardName), Keys.ENTER);
+		} catch (Exception e) {
+			System.err.println("Seach Name: " + dashboardName + " not found");
+		}
+	}
+
 	public void switchToWindow(int index) {
 		try {
 			Set<String> allWindows = driver.getWindowHandles();
@@ -286,20 +353,20 @@ public class SeleniumBase extends Reporter implements Browser1, Element {
 
 	public boolean verifyUrl(String url) {
 		if (driver.getCurrentUrl().equals(url)) {
-			System.out.println("The url: "+url+" matched successfully");
+			System.out.println("The url: " + url + " matched successfully");
 			return true;
 		} else {
-			System.out.println("The url: "+url+" not matched");
+			System.out.println("The url: " + url + " not matched");
 		}
 		return false;
 	}
 
 	public boolean verifyTitle(String title) {
 		if (driver.getTitle().equals(title)) {
-			System.out.println("Page title: "+title+" matched successfully");
+			System.out.println("Page title: " + title + " matched successfully");
 			return true;
 		} else {
-			System.out.println("Page url: "+title+" not matched");
+			System.out.println("Page url: " + title + " not matched");
 		}
 		return false;
 	}
@@ -325,5 +392,7 @@ public class SeleniumBase extends Reporter implements Browser1, Element {
 		}
 		return number;
 	}
+
+	
 
 }

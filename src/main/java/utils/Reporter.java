@@ -1,6 +1,10 @@
 package utils;
 
+import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
@@ -23,9 +27,14 @@ public abstract class Reporter extends AbstractTestNGCucumberTests {
 	public String testCaseName, testDescription, nodes, authors, category;
 	public String excelFileName;
 
+	public static String folderName = "";
+
 	@BeforeSuite
 	public void startReport() {
+
 		reporter = new ExtentHtmlReporter("./reports/result.html");
+
+		reporter.setAppendExisting(true);
 		extent = new ExtentReports();
 		extent.attachReporter(reporter);
 	}
@@ -36,7 +45,9 @@ public abstract class Reporter extends AbstractTestNGCucumberTests {
 		test.assignAuthor(authors);
 		test.assignCategory(category);
 	}
+
 	public abstract long takeSnap();
+
 	public void reportStep(String dec, String status, boolean bSnap) throws IOException {
 		MediaEntityModelProvider img = null;
 		if (bSnap && !status.equalsIgnoreCase("INFO")) {
@@ -50,25 +61,24 @@ public abstract class Reporter extends AbstractTestNGCucumberTests {
 
 			}
 		}
-		
+
 		if (status.equalsIgnoreCase("pass")) {
-			node.pass(dec, 
-					img);
+			node.pass(dec, img);
 		} else if (status.equalsIgnoreCase("fail")) {
-			node.fail(dec, 
-					img);
-		}
-	}
-		public void reportStep1(String desc, String status) {
-			try {
-				reportStep(desc, status, true);
-			} catch (IOException e) {				
-				e.printStackTrace();
-			}
-		}
-		@AfterSuite
-		public void stopReport() {
-			extent.flush();
+			node.fail(dec, img);
 		}
 	}
 
+	public void reportStep1(String desc, String status) {
+		try {
+			reportStep(desc, status, true);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@AfterSuite
+	public void stopReport() {
+		extent.flush();
+	}
+}
